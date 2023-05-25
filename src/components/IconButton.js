@@ -1,8 +1,7 @@
 import { Fragment } from 'react'
 import { Button } from './Button'
 import 'material-icons/iconfont/material-icons.css'
-
-
+import * as FcIcons from "react-icons/fc";
 
 export const Icon = (props) => {
     return (
@@ -12,15 +11,16 @@ export const Icon = (props) => {
 }
 
 
-const IconButton = ({ iconName, background, label, ...others }) => {
+const IconButton = ({ reactIcons = false, iconName, background, label, children, ...others }) => {
     return (
         <Fragment>
             <Button {...others} background={background}>
                 <Icon name={iconName} />
                 {label}
+                {children}
             </Button>
-        </Fragment >
-    )
-}
+        </Fragment>
+    );
+};
 
 export default IconButton

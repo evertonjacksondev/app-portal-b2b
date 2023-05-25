@@ -41,13 +41,39 @@ export const ProtectedRoutes = () => {
     <Navigate to='/login' />
 }
 
+// export const getToken = async () => {
+//   try {
+//     const Authorization = `Bearer ${JSON.parse(localStorage.getItem('authToken')).authToken}`
+
+
+//     return Authorization
+//   }
+//   catch (error) {
+//     console.log(error)
+//   }
+// }
+
 export const getToken = async () => {
   try {
-    const Authorization = `Bearer ${JSON.parse(localStorage.getItem('authToken')).authToken}`
+    const token = JSON.parse(localStorage.getItem('authToken'))
+
+    let Authorization
+    if (token && token.authToken) {
+
+      Authorization = `Bearer ${token.authToken}`
+      const decodedToken = jwtDecode(Authorization);
+
+      const currentTime = Date.now() / 1000;
+      if (decodedToken.exp < currentTime) {
+
+        throw 'Token expirado ou invalido !'
+      }
+    }
+    
 
     return Authorization
   }
   catch (error) {
-    console.log(error)
+    throw 'Token expirado ou invalido !'
   }
 }

@@ -52,6 +52,7 @@ const ModalContainer = styled.div`
   display:flex;
   gap:20px;
   flex-direction:column;
+  box-shadow: 0 1px 10px rgb(0 0 0 / 0.2);
   justify-content: center;
   align-items: center;
   overflow: hidden;
@@ -70,7 +71,6 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
- ;
 `
 
 
@@ -90,7 +90,7 @@ cursor: pointer;
 
 `
 
-const Login = () => {	
+const Login = () => {
 
 	const navigate = useNavigate()
 	const { enqueueSnackbar } = useSnackbar()
@@ -174,9 +174,9 @@ const Login = () => {
 					navigate('/produtos')
 					enqueueSnackbar('Código Autenticado, Faça o login novamente!', { variant: 'success' })
 				} else {
-						localStorage.setItem('authToken', JSON.stringify(value.payload))
-						navigate('/produtos')
-						enqueueSnackbar('Autorizado!', { variant: 'success' })
+					localStorage.setItem('authToken', JSON.stringify(value.payload))
+					navigate('/produtos')
+					enqueueSnackbar('Autorizado!', { variant: 'success' })
 				}
 			}
 
@@ -250,10 +250,10 @@ const Login = () => {
 			}
 			{
 				!isLogin && (
-					<>
+					<ModalContainer >
 						<LoginItem>
 							<Img src={logo} />
-							<p>Faça seu Login</p>
+							<Paragraph>Faça seu Login</Paragraph>
 							<strong><em>WARNING!</em> Acesso exclusivo para colaborador</strong>
 						</LoginItem>
 						<LoginItem>
@@ -278,9 +278,10 @@ const Login = () => {
 						<LoginItem>
 							<Button background="#61a2f7" disabled={handleDisabled()} onClick={handleSubmit}>Entrar </Button>
 						</LoginItem>
-					</>)
+				
+					</ModalContainer>)
 			}
-
+	
 		</LoginContainer >
 	)
 

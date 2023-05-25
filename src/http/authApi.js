@@ -30,7 +30,7 @@ export default {
 
         try {
             if (!code) throw 'Código de validação obrigatório'
-
+         
             const { data } = await axios({
                 method: 'post',
                 timeout: '30000',

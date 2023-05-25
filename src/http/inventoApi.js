@@ -42,6 +42,26 @@ export const insertOrder = async (data) => {
 
 }
 
+export const insertOrderInvento = async (data) => {
+
+    try {
+        let Authorization = (await getToken())
+        const orders = await axios({
+            method: 'post',
+            timeout: '30000',
+            url: `http://localhost:5005/v1/order/invento`,
+            headers: {
+                Authorization
+            },
+            data
+        })
+        return orders.data
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
 export const getPartnerId = async (search) => {
 
     try {

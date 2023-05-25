@@ -78,6 +78,9 @@ const TooltipBox = styled.div`
    border-radius: 4px;
 `;
 
+
+
+
 export const Card = ({ data, setPagination, currentPage = 1, totalPages = 1 }) => {
 
     const [countItem, setCountItem] = useState([])
@@ -189,13 +192,13 @@ export const Card = ({ data, setPagination, currentPage = 1, totalPages = 1 }) =
                                 <Paragraph> - Preço Por: {value.fromPrice} </Paragraph>
                             </CardAvatar>
                             <CardAvatar>
-                                <IconButton disabled={value.avaible == 'false' ? true : false} onClick={() => { handleAddCart(value) }} style={{ width: '30px', height: '30px' }} iconName='add' />
+                                <IconButton disabled={value.avaible == 'false' ? true : false} onClick={() => { handleRemoveCart(value) }} style={{ width: '30px', height: '30px' }} iconName='remove' />
                                 <Paragraph style={{ margin: 10, fontSize: 16, textAlign: 'center' }}>
                                     {countItem.find(f => f.codigo == value.codigo) ?
                                         countItem.find(f => f.codigo == value.codigo).quantity : 0
                                     }
                                 </Paragraph>
-                                <IconButton disabled={value.avaible == 'false' ? true : false} onClick={() => { handleRemoveCart(value) }} style={{ width: '30px', height: '30px' }} iconName='remove' />
+                                <IconButton disabled={value.avaible == 'false' ? true : false} onClick={() => { handleAddCart(value) }} style={{ width: '30px', height: '30px' }} iconName='add' />
                             </CardAvatar>
                         </CardItem >
                     )

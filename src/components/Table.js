@@ -102,6 +102,7 @@ const TableDivider = styled.hr`
     height: 2px;
     width:100%;
     background-color: gray;
+    border: 1px dotted ;
     margin-bottom:6px;
 `
 const TableDataSum = styled.td`
@@ -196,8 +197,6 @@ const Table = ({ columns = [], data = [], setPagination, totalPages = 100, curre
 
     const convertMonetaryValueToNumber = (value) => {
         const valueConvert = Number(value).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-
-
         return valueConvert;
     };
 
@@ -296,7 +295,7 @@ const Table = ({ columns = [], data = [], setPagination, totalPages = 100, curre
                                 <tr >
                                     <TableDataSum>Valor Real: {values && values.length > 0 && convertMonetaryValueToNumber(values.reduce((accumulator, item) => accumulator + (item.quantity * item.price), 0))}</TableDataSum>
                                 </tr>
-                                <TableDivider />
+                             
                             </>
                         )}
 

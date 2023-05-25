@@ -215,7 +215,7 @@ export const Products = () => {
 										if (filter.onChange) filter.onChange(e)
 									}}
 								>
-									<option value="" hidden>Selecione o statatus</option>
+									<option value="" hidden>Selecione o status</option>
 									<option value="Disponível" >Disponível</option>
 									<option value="Indisponivel" >Indisponivel</option>
 
@@ -234,7 +234,7 @@ export const Products = () => {
 				<FilterButtonItem>
 					<IconButton
 						iconName={'search'}
-						label={'Procurar'}
+						label={'Procurar (Enter)'}
 						onClick={handleSubmitFilter}
 					/>
 				</FilterButtonItem>
